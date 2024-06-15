@@ -11,17 +11,14 @@ Control a system remotely via telegram  in Powershell
 </ul>
 <h2 id="next-update">🔱 Next Update</h2>
 <ul>
-<li>fix  ui bugs</li>
-<li>clean code </li>
-<li>add event for distroy</li>
-<li>add multi exec command for client</li>
-<li>upload and  download module</li>
-<li>async command</li>
-<li>scheduled task ( Date )</li>
-<li>background task </li>
-<li>ui for system information and manage like hiorbit</li>
-<li>add file manager </li>
-<li>security (xss,csrf,rce,login page,...)</li>
+<li>Multi Client Without DB!</li>
+<li>Add Sch Task</li>
+<li>Add Proxy</li>
+<li>Add Upload Module</li>
+<li>Add Download Module</li>
+<li>Add Screenshot Module</li>
+<li>Add Encryption Key</li>
+
 </ul>
 <h2 id="contact">📧 Contact</h2>
 <p >
