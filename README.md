@@ -8,12 +8,12 @@
     </p>
 <p align="center">
   <a href="https://php.net">
-    <img src="https://img.shields.io/badge/php-8.0.7-green" alt="php">
+    <img src="https://img.shields.io/badge/powershell-5-blue" alt="powershell">
   </a>
   <a href="#">
     <img src="https://img.shields.io/badge/platform-Windows-red">
   </a>
-    <a href="https://www.codefactor.io/repository/github/jxroot/ReHTTP">  <img src="https://www.codefactor.io/repository/github/jxroot/ReHTTP/badge" alt="CodeFactor" /> </a>
+    <a href="https://www.codefactor.io/repository/github/jxroot/powtel">  <img src="https://www.codefactor.io/repository/github/jxroot/powtel/badge" alt="CodeFactor" /> </a>
    
 
    
