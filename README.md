@@ -1,5 +1,31 @@
-# powtel
-Control a system remotely via telegram  in Powershell
+<h3 align="center"><img src="https://styles.redditmedia.com/t5_2zmr2/styles/communityIcon_wcik80qt2vx71.png" alt="logo" height="250px"></h3>
+<p align="center">
+    <b>Powtel</b><br>
+    </p>
+<hr>
+<p align="center">
+  <b> Control a system remotely via telegram  in Powershell</b>
+    </p>
+<p align="center">
+  <a href="https://php.net">
+    <img src="https://img.shields.io/badge/php-8.0.7-green" alt="php">
+  </a>
+  <a href="#">
+    <img src="https://img.shields.io/badge/platform-Windows-red">
+  </a>
+    <a href="https://www.codefactor.io/repository/github/jxroot/ReHTTP">  <img src="https://www.codefactor.io/repository/github/jxroot/ReHTTP/badge" alt="CodeFactor" /> </a>
+   
+
+   
+
+  
+</p>
+
+
+
+
+
+
 <h2 id="Doante">✌️ Doante Me:</h2>
 <ul>
 <li>Ethereum (ETH)   : <code>0xfeCB5B86b0694FE943472c11183455924899e618</code> -  ETH Network</li>
