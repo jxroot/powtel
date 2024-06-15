@@ -21,7 +21,7 @@
   
 </p>
 
-
+<p><img src="https://github.com/jxroot/powtel/blob/main/demo.gif?raw=true" alt="shell tab demo"><br></p>
 
 
 
