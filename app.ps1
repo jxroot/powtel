@@ -68,7 +68,7 @@ $shell_buttons = @{
 }
 
 
-
+# if wana work like scheduled task after client online run previous task disable  Delete-TelegramMessage function 
 Delete-TelegramMessage
 Send-TelegramMessage -chatId $chatId -text 'Client Is Online (:'  -replyMarkup $main_buttons 
 # Main loop to process updates
