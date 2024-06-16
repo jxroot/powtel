@@ -14,7 +14,7 @@ function Send-TelegramMessage {
         [string]$text,
         [hashtable]$replyMarkup
     )
-# parse_mode   = 'Markdown'
+    # parse_mode   = 'Markdown'
     $params = @{
         chat_id      = $chatId
         text         = $text
@@ -168,7 +168,7 @@ while ($true) {
                                     $exec = $_.Exception.Message
                                 }
                         
-                               # Send-TelegramMessage -chatId $chatId -text  "``````powershell $exec``````"
+                                # Send-TelegramMessage -chatId $chatId -text  "``````powershell $exec``````"
                                 Send-TelegramMessage -chatId $chatId -text  $exec
                             }
                         }
@@ -240,9 +240,68 @@ while ($true) {
    
                 }
                 "Upload" {
-                    # next update
-                    $exec = Invoke-RestMethod -UserAgent $UAG https://ident.me | Out-String 
-                    Send-TelegramMessage -chatId $chatId -text $exec
+                   
+                    Send-TelegramMessage -chatId $chatId -text "Send File Set Path in caption" -replyMarkup $back_buttons
+                    while ($true) {
+                        
+                        if ($messageText -eq "Back" ) {
+                            break
+                        }
+                        $updates = Get-TelegramUpdates -offset $offset
+                        foreach ($update in $updates) {
+                            $offset = $update.update_id + 1
+                    
+                            if ($update.message) {
+                                $chatId = $update.message.chat.id
+                                $messageText = $update.message.text
+                                if ($messageText -eq "Back" ) {
+                                    Send-TelegramMessage -chatId $chatId -text "Choose an option:" -replyMarkup $main_buttons 
+                                    break
+                                }
+                                if ($update.message.caption) {
+
+                                    if ($update.message.document.file_id) {
+
+                                        $fileId = $update.message.document.file_id
+                                    }
+                                    if ($update.message.photo.file_id) {
+                                        $fileId = $update.message.photo.file_id
+                                        
+                                    }
+                                    if ($update.message.audio.file_id) {
+                                        $fileId = $update.message.audio.file_id
+
+                                    }
+                              
+                                    $outputFilePath = $update.message.caption
+        
+                                    $getFileUrl = "$apiUrl/getFile?file_id=$fileId"
+                                    $response = Invoke-RestMethod -Uri $getFileUrl -Method Get
+
+                                    # Check if the response contains the file_path
+                                    $filePath = $response.result.file_path
+                                    # Step 2: Download the file using the file path
+                                    $downloadUrl = "https://api.telegram.org/file/bot$botToken/$filePath"
+
+                                    # Specify the output file path
+
+                                    # Download the file
+                                    Invoke-WebRequest -Uri $downloadUrl -OutFile $outputFilePath
+                                }
+                                else {
+                                    Send-TelegramMessage -chatId $chatId -text "Error Set Path in Caption !" -replyMarkup $back_buttons 
+
+                                }
+                
+                            }
+                        }
+                 
+
+                        
+                    }
+
+
+
                 }
                 default {
                     Send-TelegramMessage -chatId $chatId -text "Choose an option:" -replyMarkup $main_buttons 
