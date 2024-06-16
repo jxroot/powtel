@@ -14,11 +14,11 @@ function Send-TelegramMessage {
         [string]$text,
         [hashtable]$replyMarkup
     )
-
+# parse_mode   = 'Markdown'
     $params = @{
         chat_id      = $chatId
         text         = $text
-        parse_mode   = 'Markdown'
+       
         reply_markup = $replyMarkup | ConvertTo-Json -Compress
     }
 
