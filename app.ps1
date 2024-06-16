@@ -123,7 +123,7 @@ while ($true) {
                                 }
                         
                                 Send-TelegramMessage -chatId $chatId -text $exec
-                                sleep 1
+                                
 
                             }
                         }
@@ -161,5 +161,5 @@ while ($true) {
             }
         }
     }
-    sleep 1
+   
 }
